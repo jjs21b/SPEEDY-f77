@@ -1,0 +1,2 @@
+r,s,res_name,method,exp_settings,infla,err_obs,obs_plc,list_snapshots,code,option_mask,nonlinear_obs,wind_nonlinear_operator,scalefact,normalize_nonlinear
+3,1,t21,LETKF,../LETKF_tuning/t21_80_0.05_30/,1.0,"0.025, 0.05, 0.01, 0.01, 0.005, 0.025, 0.05, 0.01, 0.01, 0.005","1,1,1,1,1,1,1,1,1,1","0,1,2,3,4",,2,True,False,1.0,False

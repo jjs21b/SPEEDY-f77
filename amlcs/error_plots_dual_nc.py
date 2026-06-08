@@ -17,8 +17,8 @@ Generates two families of plots for each variable:
 
 # FULL PATHS to the two experiment directories you want to compare:
 
-EXP1 = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100/wsg_only/data"
-EXP2 = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_100/wsg_only_m1/data"
+EXP1 = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100/wdg_wsg/data"
+EXP2 = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_100/wdg_wsg_m1/data"
 
 # SPEEDY resolution:
 RESOLUTION = "t21"
@@ -44,7 +44,7 @@ GENERATE_LOG_PLOTS = True
 
 # Explicit Output Directory (optional)
 # If set, plots will be saved here directly.
-OUTPUT_DIR = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100/wsg_only/letkf_m1r3_vs_reverseSDE"
+OUTPUT_DIR = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100/wdg_wsg/letkf_m1r2_vs_reverseSDE"
 
 # Output directory name (ignored if OUTPUT_DIR is set)
 PLOT_DIR_NAME = None  
@@ -353,7 +353,7 @@ def _compute_error_series(exp_path: Path, method: str, var: str, lev: int, cycle
             errors.append(error)
             
         except (FileNotFoundError, KeyError) as e:
-            print(f"Warning: Error computing {field_type} for cycle {cycle_k}: {e}") # Suppress
+            # print(f"Warning: Error computing {field_type} for cycle {cycle_k}: {e}") # Suppress
             errors.append(np.nan)
     
     return np.array(errors)
