@@ -11,6 +11,8 @@ amlcs/t21_ENSF.csv
 *.npy
 /ENSF_gaussian_check
 /.vscode
+.codex
+wind_assimilation_approach_v2.md
 # 1. Ignore everything inside the 'runs' directory by default
 runs/*
 
