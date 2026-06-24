@@ -24,11 +24,7 @@ explicitly if you ever want to vary it.
 
 Examples
 --------
-    python reversesde_tuning.py submit \
-        --template ensf_runner_nonlinear.csv \
-        --infla-values 0.6,0.8,1.0,1.2,1.4 \
-        --exp-settings ../LETKF_tuning/t21_80_0.05_30/ \
-        --name ensf
+    python reversesde_tuning.py submit --template ensf_runner_wdg_wsg.csv --infla-values 0.6,0.8,1.0,1.2,1.4 --exp-settings ../LETKF_tuning/t21_80_0.05_30/ --name wdg_wsg_inflation
 
     python reversesde_tuning.py collect reversesde_tuning_runs/ensf/manifest.json
 """
