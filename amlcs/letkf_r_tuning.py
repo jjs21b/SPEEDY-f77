@@ -10,6 +10,8 @@ Sweeps a 2D grid of localization radius (r) x multiplicative inflation
            overridden), submit one sbatch job per cell running amlcs_da.py
            followed by an organize step, record a manifest, and submit a
            dependent collection job that runs once all sweeps finish.
+           Use --max-concurrent N to cap simultaneous runs (batches are chained
+           with Slurm afterany dependencies).
 
   organize Move one run's unified_cycle NetCDF files into
            <run_folder>/<name>/data/. Runs automatically at the end of each r's
@@ -32,7 +34,12 @@ Examples
         --r-values 1,2,3,4,5 \
         --infla-values 1.0,1.15,1.3,1.45,1.6 \
         --exp-settings ../LETKF_tuning/t21_80_0.05_30/ \
-        --name arctan
+        --name arctan \
+        --max-concurrent 5
+
+    # --max-concurrent 5 (default 0 = all at once) chains batches with Slurm
+    # afterany dependencies so the next batch starts only after the previous
+    # batch finishes. One submit call still schedules the full grid plus collect.
 
     python letkf_r_tuning.py collect letkf_tuning_runs/arctan/manifest.json
 """
@@ -196,6 +203,42 @@ def _parse_job_id(sbatch_stdout):
     return None
 
 
+def _batched(items, batch_size):
+    """Split *items* into consecutive chunks; batch_size <= 0 yields one chunk."""
+    if not batch_size or batch_size <= 0 or batch_size >= len(items):
+        yield items
+        return
+    for i in range(0, len(items), batch_size):
+        yield items[i:i + batch_size]
+
+
+def _submit_sweep_job(args, cfg_rel, run_folder, r, infla, prev_batch_job_ids):
+    """Submit one sbatch job; optionally wait for the previous batch (afterany)."""
+    ii = _infla_token(infla)
+    organize_cmd = (f'./run_py.sh {Path(__file__).name} organize '
+                    f'"{run_folder}" --name {args.name}')
+    wrap = f'./run_py.sh amlcs_da.py {cfg_rel} && {organize_cmd}'
+    cmd = [
+        "sbatch",
+        f"--account={args.account}",
+        f"--partition={args.partition}",
+        f"--time={args.time}",
+        f"--mem={args.mem}",
+        "--nodes=1",
+        "--ntasks-per-node=1",
+        f"--job-name={args.name}_r{r}_i{ii}",
+    ]
+    if prev_batch_job_ids:
+        cmd.append(f"--dependency=afterany:{':'.join(prev_batch_job_ids)}")
+    cmd.append(f"--wrap={wrap}")
+    result = subprocess.run(cmd, cwd=SCRIPT_DIR, capture_output=True, text=True)
+    print(result.stdout.strip())
+    if result.returncode != 0:
+        print(result.stderr.strip(), file=sys.stderr)
+        sys.exit(f"sbatch submission failed for r={r}, infla={infla}")
+    return _parse_job_id(result.stdout)
+
+
 def submit(args):
     template_path = _resolve(args.template)
     if not template_path.exists():
@@ -232,8 +275,10 @@ def submit(args):
         print("WARNING: `sbatch` not found on PATH. Configs and manifest will be "
               "generated, but no jobs will be submitted.")
 
+    max_concurrent = int(getattr(args, "max_concurrent", 0) or 0)
+
     runs = []
-    run_job_ids = []
+    pending = []
     # 2D grid sweep: every (r, infla) cell is an independent run with its own
     # config and run folder (the inflation token in the folder name keeps
     # parallel runs from overwriting each other).
@@ -251,48 +296,49 @@ def submit(args):
             df.to_csv(cfg_path, index=False)
 
             run_folder = runs_root / folder_for(r, infla)
-
-            # Path passed to run_py.sh / amlcs_da.py, relative to amlcs/.
             cfg_rel = os.path.relpath(cfg_path, SCRIPT_DIR)
-
-            job_id = None
-            if have_sbatch:
-                # After the DA run finishes, organize this run's cycle files into
-                # <run_folder>/<name>/data/ within the same job.
-                organize_cmd = (f'./run_py.sh {Path(__file__).name} organize '
-                                f'"{run_folder}" --name {args.name}')
-                wrap = f'./run_py.sh amlcs_da.py {cfg_rel} && {organize_cmd}'
-                cmd = [
-                    "sbatch",
-                    f"--account={args.account}",
-                    f"--partition={args.partition}",
-                    f"--time={args.time}",
-                    f"--mem={args.mem}",
-                    "--nodes=1",
-                    "--ntasks-per-node=1",
-                    f"--job-name={args.name}_r{r}_i{ii}",
-                    f"--wrap={wrap}",
-                ]
-                result = subprocess.run(cmd, cwd=SCRIPT_DIR, capture_output=True, text=True)
-                print(result.stdout.strip())
-                if result.returncode != 0:
-                    print(result.stderr.strip(), file=sys.stderr)
-                    sys.exit(f"sbatch submission failed for r={r}, infla={infla}")
-                job_id = _parse_job_id(result.stdout)
-                if job_id:
-                    run_job_ids.append(job_id)
-
             data_dir = run_folder / args.name / "data"
-            runs.append({
+
+            pending.append({
                 "r": r,
                 "infla": infla,
                 "config": str(cfg_path),
                 "config_rel": cfg_rel,
                 "run_folder": str(run_folder),
                 "data_dir": str(data_dir),
-                "job_id": job_id,
             })
-            print(f"  r={r} infla={infla}: config={cfg_rel} -> run_folder={run_folder} job_id={job_id}")
+
+    run_job_ids = []
+    if have_sbatch and pending:
+        batches = list(_batched(pending, max_concurrent))
+        if max_concurrent > 0 and len(batches) > 1:
+            print(f"Submitting {len(pending)} run(s) in {len(batches)} batch(es) "
+                  f"of up to {max_concurrent} concurrent job(s).")
+        prev_batch_job_ids = []
+        for batch_idx, batch in enumerate(batches, start=1):
+            batch_job_ids = []
+            for cell in batch:
+                job_id = _submit_sweep_job(
+                    args, cell["config_rel"], cell["run_folder"],
+                    cell["r"], cell["infla"], prev_batch_job_ids,
+                )
+                cell["job_id"] = job_id
+                if job_id:
+                    run_job_ids.append(job_id)
+                    batch_job_ids.append(job_id)
+                print(f"  r={cell['r']} infla={cell['infla']}: config={cell['config_rel']} "
+                      f"-> run_folder={cell['run_folder']} job_id={job_id}")
+            if max_concurrent > 0 and len(batches) > 1:
+                print(f"  Batch {batch_idx}/{len(batches)}: "
+                      f"{len(batch_job_ids)} job(s) submitted.")
+            prev_batch_job_ids = batch_job_ids
+        runs = pending
+    else:
+        for cell in pending:
+            cell["job_id"] = None
+            runs.append(cell)
+            print(f"  r={cell['r']} infla={cell['infla']}: config={cell['config_rel']} "
+                  f"-> run_folder={cell['run_folder']} job_id=None")
 
     manifest = {
         "name": args.name,
@@ -305,6 +351,7 @@ def submit(args):
         "vars": VARS,
         "r_values": r_values,
         "infla_values": infla_values,
+        "max_concurrent": max_concurrent,
         "runs": runs,
     }
     manifest_path = campaign_dir / "manifest.json"
@@ -521,6 +568,9 @@ def build_parser(default_template=None,
     p_sub.add_argument("--partition", default=DEFAULT_SBATCH["partition"])
     p_sub.add_argument("--time", default=DEFAULT_SBATCH["time"])
     p_sub.add_argument("--mem", default=DEFAULT_SBATCH["mem"])
+    p_sub.add_argument("--max-concurrent", type=int, default=0,
+                       help="Cap simultaneous sbatch jobs (0 = no limit). Later batches "
+                            "wait for the previous batch via Slurm afterany dependencies.")
     p_sub.set_defaults(func=submit, campaign_root=campaign_root)
 
     p_org = sub.add_parser("organize",
