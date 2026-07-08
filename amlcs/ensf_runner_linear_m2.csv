@@ -1,2 +1,2 @@
 r,s,res_name,method,exp_settings,infla,err_obs,obs_plc,list_snapshots,code,option_mask,nonlinear_obs
-1,1,t21,ReverseSDE,../ENSF_gaussian_check/t21_50_0.05_20/,1.0,"0.42, 0.18, 0.46, 0.05, 0.006, 0.42, 0.18, 0.46, 0.05, 0.006","1,1,1,1,1,1,1,1,1,1","0,1,2,3,4",,2,False
+1,1,t21,ReverseSDE,../ENSF_gaussian_check/t21_50_0.05_20/,1.0,"0.42, 0.18, 0.46, 0.05, 0.006, 0.42, 0.18, 0.46, 0.05, 0.006","0,0,0,0,1,0,0,0,0,1","0,1,2,3,4",,2,False
