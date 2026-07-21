@@ -28,12 +28,13 @@ Examples
 
     python check_unified_cycles.py arctan_inflation --verbose
 
-    python check_unified_cycles.py arctan_inflation --inspect-one
+    python check_unified_cycles.py arctan_inflation --verbose -o arctan_inflation_check.txt
 """
 
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
 import re
 import sys
@@ -515,23 +516,13 @@ def build_parser() -> argparse.ArgumentParser:
                    help="Show WARN/INFO and per-field details.")
     p.add_argument("--inspect-one", action="store_true",
                    help="Print dimensions/variables from one sample file and exit.")
+    p.add_argument("-o", "--output", default=None,
+                   help="Write full report to this .txt file (path relative to amlcs/).")
     return p
 
 
-def main() -> int:
-    args = build_parser().parse_args()
-    campaign = args.campaign
-    runs_root = _resolve(args.runs_root)
-
-    manifest = _load_manifest(campaign, args.manifest)
-    if manifest is None:
-        print(f"Note: no manifest for '{campaign}'; scanning {runs_root}")
-
-    reports = _discover_runs(campaign, manifest, runs_root)
-    if not reports:
-        print(f"No LETKF runs found for campaign '{campaign}'.", file=sys.stderr)
-        return 2
-
+def _run_checks(args, campaign: str, runs_root: Path, manifest: dict | None,
+                reports: list[RunReport]) -> int:
     expected_m = None
     if not args.no_expect_cycles:
         expected_m = args.expect_cycles
@@ -540,7 +531,8 @@ def main() -> int:
 
     print(f"Campaign: {campaign}")
     if manifest is not None:
-        mpath = _resolve(args.manifest) if args.manifest else DEFAULT_CAMPAIGN_ROOT / campaign / "manifest.json"
+        mpath = (_resolve(args.manifest) if args.manifest
+                 else DEFAULT_CAMPAIGN_ROOT / campaign / "manifest.json")
         print(f"Manifest: {mpath}")
     print(f"Runs root: {runs_root}")
     if expected_m is not None:
@@ -558,6 +550,32 @@ def main() -> int:
     _print_report(reports, verbose=args.verbose)
     n_err = sum(1 for r in reports for i in r.issues if i.severity == "ERROR")
     return 1 if n_err else 0
+
+
+def main() -> int:
+    args = build_parser().parse_args()
+    campaign = args.campaign
+    runs_root = _resolve(args.runs_root)
+
+    manifest = _load_manifest(campaign, args.manifest)
+    if manifest is None:
+        print(f"Note: no manifest for '{campaign}'; scanning {runs_root}")
+
+    reports = _discover_runs(campaign, manifest, runs_root)
+    if not reports:
+        print(f"No LETKF runs found for campaign '{campaign}'.", file=sys.stderr)
+        return 2
+
+    if args.output:
+        out_path = _resolve(args.output)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(out_path, "w", encoding="utf-8") as f:
+            with contextlib.redirect_stdout(f):
+                code = _run_checks(args, campaign, runs_root, manifest, reports)
+        print(f"Report written to {out_path}")
+        return code
+
+    return _run_checks(args, campaign, runs_root, manifest, reports)
 
 
 if __name__ == "__main__":
