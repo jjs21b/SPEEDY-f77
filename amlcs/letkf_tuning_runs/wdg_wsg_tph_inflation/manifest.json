@@ -35,7 +35,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i100.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_100",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_100/wdg_wsg_tph_inflation/data",
-      "job_id": "12174035"
+      "job_id": "12183436"
     },
     {
       "r": 1,
@@ -44,7 +44,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i115.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_115",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_115/wdg_wsg_tph_inflation/data",
-      "job_id": "12174036"
+      "job_id": "12183437"
     },
     {
       "r": 1,
@@ -53,7 +53,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i130.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_130",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_130/wdg_wsg_tph_inflation/data",
-      "job_id": "12174037"
+      "job_id": "12183438"
     },
     {
       "r": 1,
@@ -62,7 +62,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i145.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_145",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_145/wdg_wsg_tph_inflation/data",
-      "job_id": "12174038"
+      "job_id": "12183439"
     },
     {
       "r": 1,
@@ -71,7 +71,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i160.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_160",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_160/wdg_wsg_tph_inflation/data",
-      "job_id": "12174039"
+      "job_id": "12183440"
     },
     {
       "r": 2,
@@ -80,7 +80,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r2_i100.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_100",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_100/wdg_wsg_tph_inflation/data",
-      "job_id": "12174040"
+      "job_id": "12183441"
     },
     {
       "r": 2,
@@ -89,7 +89,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r2_i115.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_115",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_115/wdg_wsg_tph_inflation/data",
-      "job_id": "12174041"
+      "job_id": "12183442"
     },
     {
       "r": 2,
@@ -98,7 +98,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r2_i130.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_130",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_130/wdg_wsg_tph_inflation/data",
-      "job_id": "12174042"
+      "job_id": "12183443"
     },
     {
       "r": 2,
@@ -107,7 +107,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r2_i145.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_145",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_145/wdg_wsg_tph_inflation/data",
-      "job_id": "12174043"
+      "job_id": "12183444"
     },
     {
       "r": 2,
@@ -116,7 +116,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r2_i160.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_160",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_160/wdg_wsg_tph_inflation/data",
-      "job_id": "12174044"
+      "job_id": "12183445"
     },
     {
       "r": 3,
@@ -125,7 +125,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r3_i100.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_100",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_100/wdg_wsg_tph_inflation/data",
-      "job_id": "12174045"
+      "job_id": "12183446"
     },
     {
       "r": 3,
@@ -134,7 +134,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r3_i115.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_115",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_115/wdg_wsg_tph_inflation/data",
-      "job_id": "12174046"
+      "job_id": "12183447"
     },
     {
       "r": 3,
@@ -143,7 +143,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r3_i130.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_130",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_130/wdg_wsg_tph_inflation/data",
-      "job_id": "12174047"
+      "job_id": "12183448"
     },
     {
       "r": 3,
@@ -152,7 +152,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r3_i145.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_145",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_145/wdg_wsg_tph_inflation/data",
-      "job_id": "12174048"
+      "job_id": "12183449"
     },
     {
       "r": 3,
@@ -161,7 +161,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r3_i160.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_160",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_160/wdg_wsg_tph_inflation/data",
-      "job_id": "12174049"
+      "job_id": "12183450"
     },
     {
       "r": 4,
@@ -170,7 +170,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r4_i100.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_100",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_100/wdg_wsg_tph_inflation/data",
-      "job_id": "12174050"
+      "job_id": "12183451"
     },
     {
       "r": 4,
@@ -179,7 +179,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r4_i115.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_115",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_115/wdg_wsg_tph_inflation/data",
-      "job_id": "12174051"
+      "job_id": "12183452"
     },
     {
       "r": 4,
@@ -188,7 +188,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r4_i130.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_130",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_130/wdg_wsg_tph_inflation/data",
-      "job_id": "12174052"
+      "job_id": "12183453"
     },
     {
       "r": 4,
@@ -197,7 +197,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r4_i145.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_145",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_145/wdg_wsg_tph_inflation/data",
-      "job_id": "12174053"
+      "job_id": "12183454"
     },
     {
       "r": 4,
@@ -206,7 +206,7 @@
       "config_rel": "letkf_tuning_runs/wdg_wsg_tph_inflation/configs/r4_i160.csv",
       "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_160",
       "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_160/wdg_wsg_tph_inflation/data",
-      "job_id": "12174054"
+      "job_id": "12183455"
     }
   ]
 }
