@@ -17,9 +17,8 @@ Generates two families of plots for each variable:
 
 # FULL PATHS to the two experiment directories you want to compare:
 
-EXP1 = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100/wdg_wsg/data"
-EXP2 = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_100/wdg_wsg_m1/data"
-
+EXP1 = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100/wdg_wsg_tph_inflation/data"
+EXP2 = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_115/wdg_wsg_tph_inflation/data"
 # SPEEDY resolution:
 RESOLUTION = "t21"
 
@@ -44,7 +43,7 @@ GENERATE_LOG_PLOTS = True
 
 # Explicit Output Directory (optional)
 # If set, plots will be saved here directly.
-OUTPUT_DIR = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100/wdg_wsg/letkf_m1r2_vs_reverseSDE"
+OUTPUT_DIR = "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100/wdg_wsg_tph_inflation/letkf_i115r2_vs_reverseSDE_wdg_wsg_tph"
 
 # Output directory name (ignored if OUTPUT_DIR is set)
 PLOT_DIR_NAME = None  

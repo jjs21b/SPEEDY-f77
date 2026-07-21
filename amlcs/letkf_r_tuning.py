@@ -29,13 +29,7 @@ with arctan) and sweep r to find the value that minimizes analysis RMSE.
 
 Examples
 --------
-    python letkf_r_tuning.py submit \
-        --template letkf_runner_nonlinear_sq.csv \
-        --r-values 1,2,3,4,5 \
-        --infla-values 1.0,1.15,1.3,1.45,1.6 \
-        --exp-settings ../LETKF_tuning/t21_80_0.05_30/ \
-        --name arctan \
-        --max-concurrent 5
+    python letkf_r_tuning.py submit --template letkf_runner_wind_vars.csv --r-values 1,2,3,4 --infla-values 1.0,1.15,1.3,1.45,1.6 --exp-settings ../LETKF_tuning/t21_80_0.05_30/ --name wdg_wsg_tph_inflation --max-concurrent 5
 
     # --max-concurrent 5 (default 0 = all at once) chains batches with Slurm
     # afterany dependencies so the next batch starts only after the previous

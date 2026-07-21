@@ -1,0 +1,212 @@
+{
+  "name": "arctan_inflation",
+  "template": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_runner_nonlinear.csv",
+  "exp_settings": "../LETKF_tuning/t21_80_0.05_30/",
+  "exp_settings_resolved": "/gpfs/home/jjs21b/AMLCS/LETKF_tuning/t21_80_0.05_30",
+  "snapshots_dir": "/gpfs/home/jjs21b/AMLCS/LETKF_tuning/t21_80_0.05_30/snapshots",
+  "code_path": "t21_80_0.05_30",
+  "M": 30,
+  "vars": [
+    "TG1",
+    "UG1",
+    "VG1",
+    "TRG1",
+    "PSG1"
+  ],
+  "r_values": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "infla_values": [
+    1.0,
+    1.15,
+    1.3,
+    1.45,
+    1.6
+  ],
+  "max_concurrent": 5,
+  "runs": [
+    {
+      "r": 1,
+      "infla": 1.0,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r1_i100.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r1_i100.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_100",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_100/arctan_inflation/data",
+      "job_id": "12158130"
+    },
+    {
+      "r": 1,
+      "infla": 1.15,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r1_i115.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r1_i115.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_115",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_115/arctan_inflation/data",
+      "job_id": "12158131"
+    },
+    {
+      "r": 1,
+      "infla": 1.3,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r1_i130.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r1_i130.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_130",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_130/arctan_inflation/data",
+      "job_id": "12158132"
+    },
+    {
+      "r": 1,
+      "infla": 1.45,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r1_i145.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r1_i145.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_145",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_145/arctan_inflation/data",
+      "job_id": "12158133"
+    },
+    {
+      "r": 1,
+      "infla": 1.6,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r1_i160.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r1_i160.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_160",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_1_1_160/arctan_inflation/data",
+      "job_id": "12158134"
+    },
+    {
+      "r": 2,
+      "infla": 1.0,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r2_i100.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r2_i100.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_100",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_100/arctan_inflation/data",
+      "job_id": "12158135"
+    },
+    {
+      "r": 2,
+      "infla": 1.15,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r2_i115.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r2_i115.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_115",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_115/arctan_inflation/data",
+      "job_id": "12158136"
+    },
+    {
+      "r": 2,
+      "infla": 1.3,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r2_i130.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r2_i130.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_130",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_130/arctan_inflation/data",
+      "job_id": "12158137"
+    },
+    {
+      "r": 2,
+      "infla": 1.45,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r2_i145.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r2_i145.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_145",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_145/arctan_inflation/data",
+      "job_id": "12158138"
+    },
+    {
+      "r": 2,
+      "infla": 1.6,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r2_i160.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r2_i160.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_160",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_160/arctan_inflation/data",
+      "job_id": "12158139"
+    },
+    {
+      "r": 3,
+      "infla": 1.0,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r3_i100.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r3_i100.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_100",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_100/arctan_inflation/data",
+      "job_id": "12158140"
+    },
+    {
+      "r": 3,
+      "infla": 1.15,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r3_i115.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r3_i115.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_115",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_115/arctan_inflation/data",
+      "job_id": "12158141"
+    },
+    {
+      "r": 3,
+      "infla": 1.3,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r3_i130.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r3_i130.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_130",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_130/arctan_inflation/data",
+      "job_id": "12158142"
+    },
+    {
+      "r": 3,
+      "infla": 1.45,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r3_i145.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r3_i145.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_145",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_145/arctan_inflation/data",
+      "job_id": "12158143"
+    },
+    {
+      "r": 3,
+      "infla": 1.6,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r3_i160.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r3_i160.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_160",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_3_1_160/arctan_inflation/data",
+      "job_id": "12158144"
+    },
+    {
+      "r": 4,
+      "infla": 1.0,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r4_i100.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r4_i100.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_100",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_100/arctan_inflation/data",
+      "job_id": "12158145"
+    },
+    {
+      "r": 4,
+      "infla": 1.15,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r4_i115.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r4_i115.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_115",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_115/arctan_inflation/data",
+      "job_id": "12158146"
+    },
+    {
+      "r": 4,
+      "infla": 1.3,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r4_i130.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r4_i130.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_130",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_130/arctan_inflation/data",
+      "job_id": "12158147"
+    },
+    {
+      "r": 4,
+      "infla": 1.45,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r4_i145.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r4_i145.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_145",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_145/arctan_inflation/data",
+      "job_id": "12158148"
+    },
+    {
+      "r": 4,
+      "infla": 1.6,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/letkf_tuning_runs/arctan_inflation/configs/r4_i160.csv",
+      "config_rel": "letkf_tuning_runs/arctan_inflation/configs/r4_i160.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_160",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_4_1_160/arctan_inflation/data",
+      "job_id": "12158149"
+    }
+  ]
+}

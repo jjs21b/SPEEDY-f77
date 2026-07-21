@@ -1,0 +1,73 @@
+{
+  "name": "wdg_wsg_tph_inflation",
+  "template": "/gpfs/home/jjs21b/AMLCS/amlcs/ensf_runner_wdg_wsg.csv",
+  "exp_settings": "../LETKF_tuning/t21_80_0.05_30/",
+  "exp_settings_resolved": "/gpfs/home/jjs21b/AMLCS/LETKF_tuning/t21_80_0.05_30",
+  "snapshots_dir": "/gpfs/home/jjs21b/AMLCS/LETKF_tuning/t21_80_0.05_30/snapshots",
+  "code_path": "t21_80_0.05_30",
+  "M": 30,
+  "vars": [
+    "TG1",
+    "UG1",
+    "VG1",
+    "TRG1",
+    "PSG1"
+  ],
+  "r_values": [
+    1
+  ],
+  "infla_values": [
+    0.6,
+    0.8,
+    1.0,
+    1.2,
+    1.4
+  ],
+  "runs": [
+    {
+      "r": 1,
+      "infla": 0.6,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/reversesde_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i60.csv",
+      "config_rel": "reversesde_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i60.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_60",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_60/wdg_wsg_tph_inflation/data",
+      "job_id": "12155738"
+    },
+    {
+      "r": 1,
+      "infla": 0.8,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/reversesde_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i80.csv",
+      "config_rel": "reversesde_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i80.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_80",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_80/wdg_wsg_tph_inflation/data",
+      "job_id": "12155739"
+    },
+    {
+      "r": 1,
+      "infla": 1.0,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/reversesde_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i100.csv",
+      "config_rel": "reversesde_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i100.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100/wdg_wsg_tph_inflation/data",
+      "job_id": "12155740"
+    },
+    {
+      "r": 1,
+      "infla": 1.2,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/reversesde_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i120.csv",
+      "config_rel": "reversesde_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i120.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_120",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_120/wdg_wsg_tph_inflation/data",
+      "job_id": "12155741"
+    },
+    {
+      "r": 1,
+      "infla": 1.4,
+      "config": "/gpfs/home/jjs21b/AMLCS/amlcs/reversesde_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i140.csv",
+      "config_rel": "reversesde_tuning_runs/wdg_wsg_tph_inflation/configs/r1_i140.csv",
+      "run_folder": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_140",
+      "data_dir": "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_140/wdg_wsg_tph_inflation/data",
+      "job_id": "12155742"
+    }
+  ]
+}
