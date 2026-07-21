@@ -29,12 +29,10 @@ EXPERIMENT = "wdg_wsg_tph"
 # The EnSF directory may still contain files named reverseSDE_cycle<k>.nc;
 # "EnSF" is used only as the scientific label in the generated figures.
 ENSF_DIR = (
-    "/gpfs/home/jjs21b/AMLCS/runs/"
-    "t21_80_0.05_30_ReverseSDE_1_1_100/wdg_wsg/data"
+    "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_ReverseSDE_1_1_100/wdg_wsg_tph_inflation/data"
 )
 LETKF_DIR = (
-    "/gpfs/home/jjs21b/AMLCS/runs/"
-    "t21_80_0.05_30_LETKF_2_1_100/wdg_wsg_m1/data"
+    "/gpfs/home/jjs21b/AMLCS/runs/t21_80_0.05_30_LETKF_2_1_115/wdg_wsg_tph_inflation/data"
 )
 
 # Contains snapshots/reference_solution_<k>.nc and free_run/free_run_<k>.nc.
@@ -78,26 +76,31 @@ from netCDF4 import Dataset
 VARIABLES = {
     "UG1": {
         "name": "Zonal Wind",
+        "symbol": r"$u$",
         "units": r"$\mathrm{m\,s^{-1}}$",
         "levels": tuple(range(8)),
     },
     "VG1": {
         "name": "Meridional Wind",
+        "symbol": r"$v$",
         "units": r"$\mathrm{m\,s^{-1}}$",
         "levels": tuple(range(8)),
     },
     "TG1": {
         "name": "Temperature",
+        "symbol": r"$T$",
         "units": r"$\mathrm{K}$",
         "levels": tuple(range(8)),
     },
     "TRG1": {
         "name": "Specific Humidity",
+        "symbol": r"$q$",
         "units": r"$\mathrm{g\,kg^{-1}}$",
         "levels": tuple(range(2, 8)),
     },
     "PSG1": {
         "name": "Surface Pressure",
+        "symbol": r"$p_s$",
         "units": r"$\log(p_s/P_0)$",
         "levels": (0,),
     },
@@ -369,11 +372,30 @@ def _panel_title(var: str, panel_letter: str | None = None) -> str:
     info = VARIABLES[var]
     prefix = f"({panel_letter}) " if panel_letter else ""
     if var == "PSG1":
-        return f"{prefix}{info['name']} RMSE [{info['units']}]"
-    return (
-        f"{prefix}{info['name']} [{info['units']}]\n"
-        "Level-Averaged RMSE"
-    )
+        return f"{prefix}{info['name']} [{info['symbol']}]"
+    return f"{prefix}{info['name']} [{info['symbol']}]\nLevel-Averaged"
+
+
+def _set_row_ylabels(axes: list[plt.Axes], variables: tuple[str, ...]) -> None:
+    """Label RMSE once per row while retaining variable-specific units.
+
+    The first panel receives ``RMSE [units]``. A later panel in the same row
+    receives no label when its units match, or a short units-only label when
+    they differ. This avoids repeating RMSE between adjacent panels without
+    implying that temperature, humidity, and pressure share units.
+    """
+    if len(axes) != len(variables):
+        raise ValueError("Each plotted axis must have a corresponding variable")
+
+    first_units = VARIABLES[variables[0]]["units"]
+    axes[0].set_ylabel(f"RMSE [{first_units}]")
+
+    for ax, var in zip(axes[1:], variables[1:]):
+        units = VARIABLES[var]["units"]
+        ax.set_ylabel("")
+        if units != first_units:
+            ax.set_ylabel(f"[{units}]")
+            ax.yaxis.set_label_position("right")
 
 
 def _plot_panel(
@@ -402,7 +424,6 @@ def _plot_panel(
 
     ax.set_title(_panel_title(var, panel_letter), pad=10, fontweight="semibold")
     ax.set_xlabel("Assimilation Cycle")
-    ax.set_ylabel("RMSE")
     ax.xaxis.set_major_locator(MaxNLocator(integer=True, nbins=7))
     ax.grid(True, which="major", color="0.84", linewidth=0.75)
     ax.grid(True, which="minor", color="0.92", linewidth=0.45)
@@ -471,6 +492,8 @@ def _flagship_figure(
         panel_letter = chr(ord("a") + index) if len(variables) > 1 else None
         _plot_panel(ax, all_series[var], var, scale, panel_letter)
 
+    _set_row_ylabels(axes, variables)
+
     _add_shared_legend(fig)
     fig.subplots_adjust(top=0.76, bottom=0.17, left=0.09, right=0.98, wspace=0.27)
     return fig
@@ -513,6 +536,15 @@ def _secondary_figure(
     for index, (ax, var) in enumerate(zip(axes, variables)):
         panel_letter = chr(ord("a") + index) if len(variables) > 1 else None
         _plot_panel(ax, all_series[var], var, scale, panel_letter)
+
+    if rows == 1:
+        _set_row_ylabels(axes[:count], variables)
+    elif count == 3:
+        _set_row_ylabels(axes[:2], variables[:2])
+        _set_row_ylabels([axes[2]], (variables[2],))
+    else:
+        _set_row_ylabels(axes[:2], variables[:2])
+        _set_row_ylabels(axes[2:4], variables[2:4])
 
     if rows == 2:
         # The upper row shares the cycle coordinate with the lower row. Omitting
